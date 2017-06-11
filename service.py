@@ -21,6 +21,8 @@ __scriptid__ = __addon__.getAddonInfo('id')
 __version__ = __addon__.getAddonInfo('version')
 __temp__ = unicode(translatePath(__addon__.getAddonInfo('profile')), 'utf-8')
 __subs__ = unicode(translatePath(path.join(__temp__, 'subs')), 'utf-8')
+__scriptname__ = __addon__.getAddonInfo('name')
+__language__ = __addon__.getLocalizedString
 
 
 def convert_to_utf(file):
@@ -292,3 +294,4 @@ elif action == 'clean':
         rmtree(__temp__)
     except:
         pass
+    executebuiltin((u'Notification(%s,%s)' % (__scriptname__, __language__(32004))).encode('utf-8'))
